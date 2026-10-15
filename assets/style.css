@@ -80,3 +80,29 @@ footer nav a:hover{color:var(--accent)}
 .hero-grid>*,.split>*,.two>*,.cards>*{min-width:0}
 p,li,dd{overflow-wrap:break-word;hyphens:auto}
 h1,h2,h3{overflow-wrap:break-word;hyphens:manual}
+
+/* v2: Kaufbuttons, Screenshots, Über mich, Sticky-CTA */
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:32px}
+.cta-row small{color:var(--muted)}
+.peek-title{margin-top:48px}
+.peek-title .muted{font-weight:500;font-size:.9rem}
+.peek{display:grid;grid-template-columns:1fr 1.25fr;gap:18px;align-items:start;margin-top:14px}
+.peek-col{display:grid;gap:18px}
+.shot{margin:0;background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:10px}
+.shot img{border-radius:8px;background:#fff;width:100%}
+.shot figcaption{color:var(--muted);font-size:.88rem;margin:10px 4px 2px}
+.small-note{font-size:.85rem;margin:12px 0 0}
+.about{display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:center}
+.about-photo{aspect-ratio:4/5;border:2px dashed rgba(240,160,48,.45);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;background:var(--bg2)}
+.quote blockquote{margin:0 0 12px;font-size:1.02rem}
+.quote figcaption{color:var(--muted);font-size:.88rem}
+.sticky-cta{display:none}
+@media (max-width:860px){
+ .peek{grid-template-columns:1fr}
+ .about{grid-template-columns:1fr;gap:24px}
+ .about-photo{max-width:220px}
+ .sticky-cta{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;align-items:center;justify-content:space-between;gap:12px;background:rgba(36,37,41,.96);border:1px solid rgba(240,160,48,.45);border-radius:12px;padding:8px 8px 8px 14px;box-shadow:0 10px 30px rgba(0,0,0,.45);font-size:.92rem;transition:transform .25s,opacity .25s}
+ .sticky-cta.is-hidden{transform:translateY(140%);opacity:0;pointer-events:none}
+ footer{padding-bottom:96px}
+}
+@media (max-width:480px){.sticky-cta .btn.small{display:inline-block}}
