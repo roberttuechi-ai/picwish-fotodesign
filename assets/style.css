@@ -123,3 +123,12 @@ footer nav a{margin-right:0}
 .photo-teaser .tags li{padding:6px 14px;border-radius:999px;border:1px solid rgba(240,160,48,.45);color:var(--text);font-weight:600;font-size:.9rem}
 .photo-teaser .actions{display:flex;flex-wrap:wrap;gap:12px}
 @media (max-width:480px){.photo-teaser{padding:24px 18px 20px}.photo-teaser .actions .btn{flex:1 1 100%;text-align:center}}
+/* Meine Apps */
+.app-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:30px 30px 24px;margin-top:22px}
+.app-card h3{margin:0 0 .4em;font-size:1.3rem}
+.app-card p{color:#d4d0c7}
+.app-card .tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 22px;padding:0;list-style:none}
+.app-card .tags li{padding:6px 14px;border-radius:999px;border:1px solid rgba(240,160,48,.45);color:var(--text);font-weight:600;font-size:.9rem}
+.app-card .actions{display:flex;flex-wrap:wrap;gap:12px}
+.app-card .app-legal{font-size:.85rem;color:var(--muted);margin:18px 0 0}
+@media (max-width:480px){.app-card{padding:24px 18px 20px}.app-card .actions .btn{flex:1 1 100%;text-align:center}}
