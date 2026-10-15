@@ -131,4 +131,4 @@ footer nav a{margin-right:0}
 .app-card .tags li{padding:6px 14px;border-radius:999px;border:1px solid rgba(240,160,48,.45);color:var(--text);font-weight:600;font-size:.9rem}
 .app-card .actions{display:flex;flex-wrap:wrap;gap:12px}
 .app-card .app-legal{font-size:.85rem;color:var(--muted);margin:18px 0 0}
-@media (max-width:480px){.app-card{padding:24px 18px 20px}.app-card .actions .btn{flex:1 1 100%;text-align:center}}
+@media (max-width:480px){.app-card{padding:24px 18px 20px}.app-card .tags li{border-radius:16px}.app-card .actions .btn{flex:1 1 100%;text-align:center}}
