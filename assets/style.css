@@ -123,3 +123,18 @@ footer nav a{margin-right:0}
 .photo-teaser .tags li{padding:6px 14px;border-radius:999px;border:1px solid rgba(240,160,48,.45);color:var(--text);font-weight:600;font-size:.9rem}
 .photo-teaser .actions{display:flex;flex-wrap:wrap;gap:12px}
 @media (max-width:480px){.photo-teaser{padding:24px 18px 20px}.photo-teaser .actions .btn{flex:1 1 100%;text-align:center}}
+
+/* Respect users who request reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
