@@ -1,0 +1,53 @@
+name: Picwish static-site checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - review/picwish-reduced-motion-20261025
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate reduced-motion support and stylesheet integrity
+        run: |
+          node --input-type=module <<'NODE'
+          import { existsSync, readFileSync } from 'node:fs';
+
+          const htmlPath = 'index.html';
+          const cssPath = 'assets/style.css';
+          if (!existsSync(htmlPath) || !existsSync(cssPath)) {
+            throw new Error('Required static-site entry point or stylesheet is missing.');
+          }
+
+          const html = readFileSync(htmlPath, 'utf8');
+          const css = readFileSync(cssPath, 'utf8');
+          const checks = [
+            ['HTML entry point is non-empty', html.trim().length > 0],
+            ['reduced-motion media query exists', /@media\s*\(prefers-reduced-motion:\s*reduce\)/.test(css)],
+            ['smooth scrolling is overridden', /scroll-behavior:\s*auto\s*!important/.test(css)],
+            ['transition duration is reduced', /transition-duration:\s*0\.01ms\s*!important/.test(css)],
+            ['animation duration is reduced', /animation-duration:\s*0\.01ms\s*!important/.test(css)],
+            ['default smooth-scroll rule is preserved', /html\s*\{\s*scroll-behavior:\s*smooth\s*\}/.test(css)],
+            ['CSS braces are balanced', (css.match(/\{/g) || []).length === (css.match(/\}/g) || []).length]
+          ];
+
+          for (const [name, passed] of checks) {
+            console.log(`${passed ? 'PASS' : 'FAIL'}: ${name}`);
+          }
+          if (checks.some(([, passed]) => !passed)) {
+            process.exitCode = 1;
+          }
+          NODE
